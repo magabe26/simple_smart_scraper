@@ -1,7 +1,6 @@
 /// Copyright 2019 - MagabeLab (Tanzania). All Rights Reserved.
 /// Author Edwin Magabe    edyma50@yahoo.com
 
-
 library simple_smart_scraper;
 
 export 'src/bloc.dart';

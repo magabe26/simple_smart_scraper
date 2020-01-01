@@ -19,11 +19,11 @@ class Element {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Element &&
-              runtimeType == other.runtimeType &&
-              type == other.type &&
-              tag == other.tag &&
-              markup == other.markup;
+      other is Element &&
+          runtimeType == other.runtimeType &&
+          type == other.type &&
+          tag == other.tag &&
+          markup == other.markup;
 
   @override
   int get hashCode => type.hashCode ^ tag.hashCode ^ markup.hashCode;

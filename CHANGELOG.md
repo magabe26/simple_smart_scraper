@@ -1,3 +1,5 @@
+##1.0.17
+       -petitparser versions above 2.4.0, don't work well with this library
 ##1.0.16
 ##1.0.15
       -Minor bug fixes

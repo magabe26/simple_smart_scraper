@@ -57,7 +57,7 @@ class RemoveTagFailed implements Exception {
 
   set html(String html) => _html = html;
 
- String get html => _html;
+  String get html => _html;
 
   @override
   String toString() {
