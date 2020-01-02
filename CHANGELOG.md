@@ -1,3 +1,5 @@
+##1.0.20
+     -Minor bug fixes
 ##1.0.19
        -petitparser 2.4.0 directly included to avoid a maintenance issues.
 ##1.0.18
