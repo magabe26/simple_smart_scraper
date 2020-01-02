@@ -903,7 +903,7 @@ Now let's study how the program is written.
 ```dart
 import 'dart:convert';
 import 'package:meta/meta.dart';
-import 'package:petitparser/petitparser.dart';
+import 'package:simple_smart_scraper/petitparser_2.4.0.dart';
 import 'package:simple_smart_scraper/simple_smart_scraper.dart';
 import 'package:http/http.dart' as http;
 ```
@@ -957,7 +957,7 @@ class ResultsParsers with ParserMixin {
   }
 
   Results parseResults(String html) {
-    toHtml(Parser parser) {
+   String toHtml(Parser parser) {
       return getParserResult(parser: parser, input: html);
     }
 
@@ -1071,7 +1071,7 @@ class Results {
  ```dart
 
 class ResultsDecoder extends Decoder<Results> {
-  ResultsParsers _parsers = ResultsParsers();
+ final ResultsParsers _parsers = ResultsParsers();
 
   @override
   Results mapParserResult(String result) {
@@ -1100,7 +1100,7 @@ Results.fromHtml(...) , Implementation 2 is preferred in this situation.
 ```dart
 
 class ResultsDecoder extends Decoder<Results> {
-  ResultsParsers _parsers = ResultsParsers();
+ final ResultsParsers _parsers = ResultsParsers();
 
   @override
   Results mapParserResult(String result) {
