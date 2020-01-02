@@ -152,7 +152,6 @@ Future<String> removeAttributes(String input,
   return removeAttributesImpl(input, keepAttributes: keepAttributes);
 }
 
-///////////////////////////////////////
 Future<String> removeAttributesImpl(
   String input, {
   List<String> tags = const <String>[],
@@ -213,7 +212,6 @@ Future<String> removeAttributesImpl(
   return completer.future;
 }
 
-////////////////////////////////////////////////////
 Future<String> removeEmptyTags(String input,
     {List<String> keepTags = const <String>[
       'a',
