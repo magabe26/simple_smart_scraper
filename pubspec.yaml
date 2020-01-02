@@ -1,6 +1,6 @@
 name: simple_smart_scraper
 description: A simple smart data scraping library. Data scraping is a technique in which a computer program extract data from human-readable output coming from another program.
-version: 1.0.19
+version: 1.0.20
 author: Edwin Magabe[MagabeLab] <edyma24@gmail.com>
 homepage: https://github.com/magabe26/simple_smart_scraper
 
@@ -9,7 +9,6 @@ environment:
 
 dependencies:
   path: ^1.6.0
-  path_provider: ^1.4.5
   rxdart: ^0.23.1
   http: ^0.12.0+2
   xml: ^3.5.0
