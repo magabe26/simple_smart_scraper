@@ -3,8 +3,7 @@
  * Author Edwin Magabe    edyma50@yahoo.com
  */
 
-import 'package:petitparser/petitparser.dart';
-
+import 'package:simple_smart_scraper/petitparser_2.4.0.dart';
 import 'simple_flatten_parser.dart';
 
 ///The parser that allow the parsing process to be intercepted by the [Interceptor]

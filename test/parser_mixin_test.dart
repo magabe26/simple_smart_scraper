@@ -3,7 +3,6 @@
  * Author Edwin Magabe    edyma50@yahoo.com
  */
 
-import 'package:petitparser/petitparser.dart';
 import 'package:simple_smart_scraper/simple_smart_scraper.dart';
 import 'package:simple_smart_scraper/src/element.dart';
 import 'package:simple_smart_scraper/src/parsers/any_word_parser.dart';

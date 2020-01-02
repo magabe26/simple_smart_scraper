@@ -4,7 +4,6 @@
  */
 import 'dart:async';
 import 'dart:convert';
-import 'package:petitparser/petitparser.dart';
 import 'package:meta/meta.dart';
 import 'package:simple_smart_scraper/src/parsers/any_element_parser.dart';
 import 'package:simple_smart_scraper/src/parsers/any_word_parser.dart';
@@ -13,6 +12,7 @@ import 'package:simple_smart_scraper/src/parsers/children_elements_parser.dart';
 import 'package:simple_smart_scraper/src/parsers/element_text_parser.dart';
 import 'package:simple_smart_scraper/src/parsers/forward_parser.dart';
 import 'package:simple_smart_scraper/src/parsers/intercepted_parser.dart';
+import 'package:simple_smart_scraper/petitparser_2.4.0.dart';
 import '../../simple_smart_scraper.dart';
 import 'parsers.dart';
 

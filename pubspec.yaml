@@ -12,7 +12,6 @@ dependencies:
   path_provider: ^1.4.5
   rxdart: ^0.23.1
   http: ^0.12.0+2
-  petitparser: 2.4.0
   xml: ^3.5.0
   equatable: ^1.0.1
   meta: ^1.1.7

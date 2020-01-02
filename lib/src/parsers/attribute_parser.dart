@@ -3,10 +3,9 @@
  * Author Edwin Magabe    edyma50@yahoo.com
  */
 
-import 'package:petitparser/petitparser.dart';
-
 import 'parsers.dart';
 import 'simple_flatten_parser.dart';
+import 'package:simple_smart_scraper/petitparser_2.4.0.dart';
 
 ///Parses attributes, if caseSensitive is set to false then case sensitivity is ignored,  for-example href will match HREF, hREF , Href etc
 ///And due to the characteristics of a parser returned by nonCaseSensitiveChars(), hrefXXX will also match HREF, hREF , Href etc

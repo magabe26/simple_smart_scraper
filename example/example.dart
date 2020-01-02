@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:meta/meta.dart';
-import 'package:petitparser/petitparser.dart';
+import 'package:simple_smart_scraper/petitparser_2.4.0.dart';
 import 'package:simple_smart_scraper/simple_smart_scraper.dart';
 import 'package:http/http.dart' as http;
 import 'package:simple_smart_scraper/src/element.dart';
@@ -206,7 +206,7 @@ void main() async {
   // print(results.school);
 
   //print(results.candidateResults);
-/*
+
   var client = http.Client();
   var res = await client.send(http.Request('get', Uri.parse(url)));
   res.stream
@@ -219,7 +219,7 @@ void main() async {
       print('${candidateResult.name} -  ${candidateResult.no}');
     });
   });
-*/
+
   var p = ResultsParsers();
 /*
   final String html1 = '''
@@ -342,13 +342,14 @@ void main() async {
   List<Element> trs = parserResult.getElements('tr');
   print(trs.join('\n'));
 */
-
-  SimpleSmartParserResult parserResult = SimpleSmartParser.parse(
-    await getCleanedHtml('http://localhost/primary/2019/shl_ps0101008-UPPER.htm',keepTags: ['tr','td']));
+/*
+  var parserResult = SimpleSmartParser.parse(await getCleanedHtml(
+      'http://localhost/primary/2019/shl_ps0101008-UPPER.htm',
+      keepTags: ['tr', 'td']));
   var trs = p.cleanSync(
       keepTags: {'tr', 'td'}, input: parserResult.getElements('tr').join('\n'));
   print(trs);
-
+*/
   //print(p.hasAttributes('<a href="qwerty">'));
 
   /*

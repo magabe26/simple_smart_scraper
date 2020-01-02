@@ -4,10 +4,9 @@
  */
 
 import 'dart:convert';
-import 'package:petitparser/petitparser.dart';
 import 'package:meta/meta.dart';
-
 import 'package:simple_smart_scraper/src/parsers/parser_mixin.dart';
+import 'package:simple_smart_scraper/petitparser_2.4.0.dart';
 import 'string_to_stream.dart';
 
 ///Subclass this class to build a decoder that decode a formatted string(xml ,html etc) into dart Objects,

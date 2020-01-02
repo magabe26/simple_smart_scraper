@@ -3,9 +3,8 @@
  * Author Edwin Magabe    edyma50@yahoo.com
  */
 
-import 'package:petitparser/petitparser.dart';
-
 import 'parsers.dart';
+import 'package:simple_smart_scraper/petitparser_2.4.0.dart';
 
 /// Parse any children elements except text and provided exceptionalTags
 class ChildrenElementsParser extends Parser {
