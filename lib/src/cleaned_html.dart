@@ -135,47 +135,82 @@ Future<String> removeDirtyTags(String html, Set<DirtyTag> tags) async {
   }
 }
 
+String getTagFromAttributeMatch(String matchInput, int matchStartIndex) {
+  final startIndex =
+      matchInput.lastIndexOf(RegExp(r'(<[\w]*\d*)'), matchStartIndex);
+  if (startIndex != -1) {
+    final endIndex = matchInput.indexOf(RegExp(r'\s'), startIndex);
+    if (endIndex != -1) {
+      return matchInput.substring(startIndex, endIndex).replaceAll('<', '');
+    }
+  }
+  return '';
+}
+
 Future<String> removeAttributes(String input,
     {List<String> keepAttributes = const <String>['href']}) {
+  return removeAttributesImpl(input, keepAttributes: keepAttributes);
+}
+
+///////////////////////////////////////
+Future<String> removeAttributesImpl(
+  String input, {
+  List<String> tags = const <String>[],
+  List<String> keepAttributes = const <String>[],
+}) {
   // ignore: omit_local_variable_types
   String formatted = input;
 
   var completer = Completer<String>();
 
-  bool shouldKeep(Match match) {
-    if (match.groupCount >= 1) {
-      var arry = match[0].split('=');
-      if (arry.length == 2) {
-        var attr = arry[0];
-        return keepAttributes.contains(attr) ||
-            keepAttributes.contains(attr.toLowerCase()) ||
-            keepAttributes.contains(attr.toUpperCase());
+  bool shouldKeepAttribute(Match match) {
+    final tag = getTagFromAttributeMatch(match.input, match.start);
+    if (tags.contains(tag)) {
+      if (match.groupCount >= 1) {
+        var arry = match[0].split('=');
+        if (arry.length == 2) {
+          var attr = arry[0];
+          print('$tags------------<>------------------$tag----$attr');
+
+          return keepAttributes.contains(attr) ||
+              keepAttributes.contains(attr.toLowerCase()) ||
+              keepAttributes.contains(attr.toUpperCase());
+        } else {
+          return false;
+        }
       } else {
         return false;
       }
-    } else {
-      return false;
     }
+    return false;
   }
 
   void removeSimpleAttributes() {
     formatted = formatted.replaceAllMapped(
         RegExp(r'(\w+=\s?\"?#?\w+%?\"?)', caseSensitive: false), (Match m) {
-      return shouldKeep(m) ? m[0]?.trim() : '';
+      print(
+          '${getTagFromAttributeMatch(m.input, m.start)}-------------------------------${m[0]?.trim()}');
+      return shouldKeepAttribute(m) ? m[0]?.trim() : '';
     });
   }
 
   void removeEmptyAttributes() {
     formatted = formatted.replaceAllMapped(
         RegExp(r'(\w+=\"\")', caseSensitive: false), (Match m) {
-      return shouldKeep(m) ? m[0]?.trim() : '';
+      print(
+          '${getTagFromAttributeMatch(m.input, m.start)}-------------------------------${m[0]?.trim()}');
+
+      return shouldKeepAttribute(m) ? m[0]?.trim() : '';
     });
   }
 
   void removeComplexAttributes() {
     formatted = formatted.replaceAllMapped(
         RegExp(r'(\w+=\s?\"?.+\"?)', caseSensitive: false), (Match m) {
-      return shouldKeep(m) ? m[0]?.trim() : '';
+      print(
+          '${getTagFromAttributeMatch(m.input, m.start)}-------------------------------${m[0]?.trim()}');
+
+      return shouldKeepAttribute(m) ? m[0]?.trim() : '';
     });
 
     completer.complete(formatted);
@@ -188,6 +223,7 @@ Future<String> removeAttributes(String input,
   return completer.future;
 }
 
+////////////////////////////////////////////////////
 Future<String> removeEmptyTags(String input,
     {List<String> keepTags = const <String>[
       'a',
@@ -292,7 +328,12 @@ Future<String> getCleanedHtml(
 
     html = await removeDirtyTags(html,
         removeCommonDirtTags ? (dirtyTags ?? _commonDirtTags) : dirtyTags);
-    html = await removeAttributes(html, keepAttributes: keepAttributes);
+
+    html = await removeAttributesImpl(
+      html,
+      tags: keepTags,
+      keepAttributes: keepAttributes,
+    );
     html = await removeEmptyTags(html, keepTags: keepTags);
     html = _replaceTable(html);
 

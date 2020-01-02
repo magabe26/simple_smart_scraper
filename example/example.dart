@@ -206,7 +206,7 @@ void main() async {
   // print(results.school);
 
   //print(results.candidateResults);
-
+/*
   var client = http.Client();
   var res = await client.send(http.Request('get', Uri.parse(url)));
   res.stream
@@ -220,7 +220,7 @@ void main() async {
     });
   });
 
-  var p = ResultsParsers();
+  var p = ResultsParsers();*/
 /*
   final String html1 = '''
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -359,6 +359,9 @@ void main() async {
       input: await download(
           'http://localhost/dashboard/howto_shared_links.html')));*/
   // print(await p.keepAttributes(attributes:{'src'}, input:await download('http://localhost/dashboard/howto_shared_links.html')));
+
+
+print(await getCleanedHtml(url,keepTags: ['td'],keepAttributes: ['size','bgcolor']));
 }
 
 //((<($tag)[^<>]*>).*(<[^<>]*/($tag)>))
