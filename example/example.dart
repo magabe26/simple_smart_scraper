@@ -54,7 +54,7 @@ class ResultsParsers with ParserMixin {
   }
 
   Results parseResults(String html) {
-    toHtml(Parser parser) {
+    String toHtml(Parser parser) {
       return getParserResult(parser: parser, input: html);
     }
 
@@ -178,7 +178,7 @@ Implementation 2: using the intercepted method that return InterceptedParser
 */
 
 class ResultsDecoder extends Decoder<Results> {
-  ResultsParsers _parsers = ResultsParsers();
+ final ResultsParsers _parsers = ResultsParsers();
 
   @override
   Results mapParserResult(String result) {
