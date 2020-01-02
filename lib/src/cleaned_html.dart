@@ -170,8 +170,6 @@ Future<String> removeAttributesImpl(
         var arry = match[0].split('=');
         if (arry.length == 2) {
           var attr = arry[0];
-          print('$tags------------<>------------------$tag----$attr');
-
           return keepAttributes.contains(attr) ||
               keepAttributes.contains(attr.toLowerCase()) ||
               keepAttributes.contains(attr.toUpperCase());
@@ -188,8 +186,6 @@ Future<String> removeAttributesImpl(
   void removeSimpleAttributes() {
     formatted = formatted.replaceAllMapped(
         RegExp(r'(\w+=\s?\"?#?\w+%?\"?)', caseSensitive: false), (Match m) {
-      print(
-          '${getTagFromAttributeMatch(m.input, m.start)}-------------------------------${m[0]?.trim()}');
       return shouldKeepAttribute(m) ? m[0]?.trim() : '';
     });
   }
@@ -197,9 +193,6 @@ Future<String> removeAttributesImpl(
   void removeEmptyAttributes() {
     formatted = formatted.replaceAllMapped(
         RegExp(r'(\w+=\"\")', caseSensitive: false), (Match m) {
-      print(
-          '${getTagFromAttributeMatch(m.input, m.start)}-------------------------------${m[0]?.trim()}');
-
       return shouldKeepAttribute(m) ? m[0]?.trim() : '';
     });
   }
@@ -207,9 +200,6 @@ Future<String> removeAttributesImpl(
   void removeComplexAttributes() {
     formatted = formatted.replaceAllMapped(
         RegExp(r'(\w+=\s?\"?.+\"?)', caseSensitive: false), (Match m) {
-      print(
-          '${getTagFromAttributeMatch(m.input, m.start)}-------------------------------${m[0]?.trim()}');
-
       return shouldKeepAttribute(m) ? m[0]?.trim() : '';
     });
 

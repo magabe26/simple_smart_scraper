@@ -1,3 +1,7 @@
+##1.0.21
+
+     - A Bug in getCleanedHtml() removed
+  
 ##1.0.20
      -Minor bug fixes
 ##1.0.19
